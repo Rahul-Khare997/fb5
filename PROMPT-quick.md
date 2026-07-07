@@ -1,8 +1,8 @@
-# Frontier: quick prompt (single response, minimum instruction load)
+# fb5: quick prompt (single response, minimum instruction load)
 
 The compact variant of PROMPT.md: quick mode only, for weaker models and short tasks,
 because every rule past the load-bearing few dilutes the rest. Paste everything below the
-line, attach the matching craft file from `frontier/references/craft/` if you have it, and
+line, attach the matching craft file from `fb5/references/craft/` if you have it, and
 put your task and inputs LAST. Use full PROMPT.md when the work needs candidates, the
 convergence loop, or the taste gate.
 

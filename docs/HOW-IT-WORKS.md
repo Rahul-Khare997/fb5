@@ -2,7 +2,7 @@
 
 The 10-minute deep dive: what each phase does, why it exists, and what it looks like in
 practice. The operational spec the model actually follows is
-[frontier/SKILL.md](../frontier/SKILL.md); this document explains it to humans.
+[fb5/SKILL.md](../fb5/SKILL.md); this document explains it to humans.
 
 ## The core idea
 
@@ -105,7 +105,7 @@ one-line reasons, and an UNVERIFIED section that is either honest or empty. Neve
 ## The judges, precisely
 
 Two judge roles power everything (full prompts in
-[frontier/references/judges.md](../frontier/references/judges.md)):
+[fb5/references/judges.md](../fb5/references/judges.md)):
 
 - **The verifier** finds rule violations. Fresh context, one lens, coverage-first, evidence
   actually inspected, output in a fixed parseable format. It never fixes; the producer fixes.

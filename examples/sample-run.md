@@ -1,4 +1,4 @@
-# Sample run: `/frontier the pricing page` (illustrative)
+# Sample run: `/fb5 the pricing page` (illustrative)
 
 An authored, annotated walkthrough of a full-mode run, so you know what to expect before
 spending the tokens. This is an illustration written to spec, not a captured transcript;

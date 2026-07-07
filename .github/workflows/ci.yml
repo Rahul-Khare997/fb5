@@ -35,5 +35,5 @@ jobs:
       - name: Skill zip fresh
         run: |
           rm -rf /tmp/zipcheck && mkdir /tmp/zipcheck
-          unzip -q frontier-skill.zip -d /tmp/zipcheck
-          diff -r /tmp/zipcheck/frontier frontier
+          unzip -q fb5-skill.zip -d /tmp/zipcheck
+          diff -r /tmp/zipcheck/fb5 fb5

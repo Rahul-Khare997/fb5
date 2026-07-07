@@ -43,7 +43,7 @@ circle with a thin amber ring, and a tiny amber pennant flag on a short pole abo
 Left half, vertically centered: the word "frontier" in lowercase monospace, hex #E9ECF1,
 letter-spaced wide, rendered EXACTLY as spelled; beneath it in small monospace hex #6B7280
 the tagline "quality is a procedure, not a property" EXACTLY as written; beneath that a
-rounded rectangle outline in hex #2A3242 containing monospace amber text "/frontier"; at
+rounded rectangle outline in hex #2A3242 containing monospace amber text "/fb5"; at
 the bottom a small monospace stat line in hex #9CA3AF reading EXACTLY "21 crafts /
 best-of-N candidates / 2-clean-pass convergence / taste gate". Engineering-blueprint
 precision, flat design, generous negative space, no gradients, no glow, no 3D, no shadows,
@@ -72,7 +72,7 @@ chart at night. Very fine film grain at 2-4 percent. Left third, vertically cent
 "frontier" in lowercase monospace hex #E9ECF1, letter-spaced wide, spelled EXACTLY;
 below it small monospace hex #6B7280 reading EXACTLY: quality is a procedure, not a
 property; below that a rounded-rectangle outline hex #2A3242 on lifted surface hex
-#11161F containing amber monospace text reading EXACTLY: /frontier; at the bottom a small
+#11161F containing amber monospace text reading EXACTLY: /fb5; at the bottom a small
 monospace stat line hex #9CA3AF reading EXACTLY: 21 crafts / best-of-N candidates /
 2-clean-pass convergence / taste gate. Banned: purple, gradients between hues, glow
 blobs, bokeh, lens flares, 3D renders, photography, robots, sparkles, any second light
