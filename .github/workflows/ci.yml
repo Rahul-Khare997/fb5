@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Judge encodings in sync
+        run: python3 scripts/check-sync.py
+
+      - name: dist/ bundles fresh
+        run: node scripts/build-dist.mjs --check
+
+      - name: banscan self-test (catches known-bad text, passes clean text)
+        run: |
+          printf 'We seamlessly leverage robust solutions.\nrest of the file unchanged\n' > /tmp/bad.md
+          if python3 scripts/banscan.py /tmp/bad.md; then
+            echo "banscan missed known-bad text" >&2; exit 1
+          fi
+          printf 'The CIS deduction files itself from the photographed invoice.\n' > /tmp/good.md
+          python3 scripts/banscan.py /tmp/good.md
+
+      - name: Scripts compile
+        run: python3 -m py_compile scripts/judge.py scripts/banscan.py scripts/check-sync.py evals/run.py
+
+      - name: Skill zip fresh
+        run: |
+          rm -rf /tmp/zipcheck && mkdir /tmp/zipcheck
+          unzip -q frontier-skill.zip -d /tmp/zipcheck
+          diff -r /tmp/zipcheck/frontier frontier

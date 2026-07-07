@@ -191,12 +191,19 @@ what you already verified, and the smallest thing needed to continue.
 
 ## Surface notes
 
-- Claude Code: subagents for candidates and sweeps (`verifier`, `taste-judge`); run the
-  ban-list scan on final text unless the environment demonstrably automates it; evidence via
-  real commands.
-- claude.ai and Cowork: no subagents and no hooks; run judge passes yourself with
-  [references/judges.md](references/judges.md) verbatim, run the ban lists as a manual scan on
-  final text, and state evidence honestly (what you could and could not inspect).
+- Claude Code: subagents for candidates and sweeps (`verifier`, `taste-judge`); when
+  installed as the plugin, the banscan hook lints every file you write automatically (fix
+  or justify its hits); otherwise run the ban-list scan on final text yourself; evidence
+  via real commands.
+- claude.ai and Cowork: no subagents and no hooks; take the highest freshness rung
+  available per [references/judges.md](references/judges.md) (a stateless judge call or
+  the operator's second chat beats a same-context pass), run the ban lists as a manual
+  scan on final text, and state evidence honestly (what you could and could not inspect).
+- Running on a specific model family (Claude tiers, GPT, Gemini): read the matching
+  section of [references/adapters.md](references/adapters.md) in Phase 0; it sets
+  candidate variety, format-drift compensations, pass budgets, and the family's default
+  failure to scan for.
 - Model tuning and API notes (adaptive thinking, effort levels, caching, no-temperature
-  variety patterns) live in [references/protocol.md](references/protocol.md) section 6 and
+  variety patterns) live in [references/protocol.md](references/protocol.md) section 6,
+  [references/adapters.md](references/adapters.md), and
   [references/craft/prompting.md](references/craft/prompting.md) section 4.

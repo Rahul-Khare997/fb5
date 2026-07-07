@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.2.0 (2026-07-07)
+
+The cross-model release: the "works on GPT and Gemini too" claim gets its levers, its
+gates, and its measurement harness.
+
+- `references/adapters.md`: per-family setup for Claude (Opus/Sonnet/Haiku), GPT-5.x and
+  o-series, and Gemini: message placement, candidate variety with and without sampling
+  params, each family's default failure (Claude cream-and-serif taste, GPT hedging, Gemini
+  output compression and template drift) with standing compensations, pass budgets per
+  tier, cross-family judging. Protocol section 6 and prompting.md section 4 now route to
+  it; PROMPT.md carries the three per-model lines inline.
+- Fresh eyes anywhere: `scripts/judge.py` runs both judges as stateless API calls
+  (Anthropic, OpenAI, Gemini; stdlib only) with schema-enforced output
+  (`references/judge-schemas.json`); judges.md now ranks the freshness ladder explicitly
+  (stateless call > operator's second chat > same-context bracketed pass).
+- Mechanical ban-list gate: `scripts/banscan.py` (files, stdin, or hook mode) plus
+  `hooks/hooks.json`, so the plugin scans every file the model writes and feeds hits back
+  in-turn. Law 7 enforced, not requested.
+- Eval harness (`evals/`): A/B per task (bare vs protocol), scored by a fresh verifier on
+  a strong judge model, across providers; six tasks covering writing, code, design,
+  research, product, prompting. No results published yet; the README labels the
+  cross-model claim an estimate until the table exists.
+- `dist/` one-paste bundles per domain (PROMPT.md + craft standard merged, task slot
+  last), built by `scripts/build-dist.mjs`; `PROMPT-quick.md` compact variant for weaker
+  models and short tasks.
+- CI (`.github/workflows/ci.yml`): judge-encoding sync guard (`scripts/check-sync.py`),
+  dist freshness, banscan self-test, script compilation, skill-zip freshness.
+
 ## 1.1.1 (2026-07-04)
 
 - Positioning: names the target models (Opus, Sonnet, GPT, Gemini) and the Fable 5

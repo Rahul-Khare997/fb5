@@ -264,7 +264,15 @@ When a curated library of best-in-class design references is available to you, s
 
 ---
 
-## 6. Model tuning notes (Claude Opus 4.8, current as of 2026-07)
+## 6. Model tuning notes
+
+Per-family adapters (Claude tiers, GPT-5.x/o-series, Gemini, chat-only surfaces, and
+cross-family judging) live in `references/adapters.md`; read the section for the model you
+are running before Phase 0. The knobs that differ per family: candidate variety (sampling
+params exist on GPT non-reasoning tiers and Gemini, not on Claude Opus 4.7+/Sonnet 5),
+format discipline (Gemini drifts fastest, use structured outputs for judges), output
+completeness (Gemini compresses long tails; produce per inventory part), and pass budgets
+(weaker tiers get more, smaller sweeps).
 
 When YOU are Opus (or when building prompts that run on Opus), these are the known levers:
 

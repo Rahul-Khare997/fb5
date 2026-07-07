@@ -1,11 +1,25 @@
 # Judge prompts (portable; canonical source)
 
 The agent files (`agents/verifier.md`, `agents/taste-judge.md`) and PROMPT.md encode these
-same judges; when editing any encoding, sync all of them. In Claude Code the judges run as
-agents; on surfaces without subagents (claude.ai, Cowork, API), run them yourself as
-separate, clearly-bracketed passes using the prompts below verbatim, adopting the role fully
-and defending nothing you produced. A judge pass in the same conversation is weaker than a
-fresh context; compensate by running the role verbatim and by never editing while judging.
+same judges; when editing any encoding, sync all of them (`scripts/check-sync.py` verifies
+the invariant lines; CI runs it). In Claude Code the judges run as agents. Everywhere else,
+freshness is a ladder; take the highest rung you can reach:
+
+1. **A stateless API call** (`scripts/judge.py`): the judge sees only the rubric, the
+   evidence, and its lens; nothing of the producing conversation. Works across Anthropic,
+   OpenAI, and Gemini, and enforces the output shape with a schema
+   ([judge-schemas.json](judge-schemas.json)) where the provider supports it. Cross-family
+   judging (produce on one family, judge on another) also removes family-default blind
+   spots; see [adapters.md](adapters.md) section 5.
+2. **The two-chat protocol** (any chat surface, no API): open a NEW chat that has never
+   seen the producing conversation, paste the judge prompt below verbatim, then the rubric
+   and the artifact (or attach the files). The producing chat only fixes; the judging chat
+   only finds. One judging chat per lens, or one chat re-prompted per lens.
+3. **Same-conversation bracketed pass** (the floor, not the method): run the prompt below
+   verbatim as a separate, clearly-bracketed pass, adopting the role fully and defending
+   nothing you produced, never editing while judging. This is measurably weaker: the
+   context that produced the work rationalizes it. Use it only when rungs 1-2 are
+   unavailable, and say so in the report.
 
 ## Judge 1: the fresh-eyes verifier (runs every sweep, one lens per invocation)
 
