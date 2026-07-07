@@ -22,7 +22,17 @@ promise about work not yet done.
 
 The bundled snapshots in [references/](references/) are canonical: `protocol.md`, `craft/*.md`,
 `judges.md`. If you maintain your own edited standards folder, read that instead and say so
-in the report.
+in the report. Two optional layers sit on top when they exist:
+
+- **The house overlay** (`references/house.md`, created by the tailor interview in
+  [docs/TAILOR.md](../docs/TAILOR.md); template at
+  [references/house-template.md](references/house-template.md)): the user's brand tokens,
+  voice, house bans, and non-negotiables. Its rules join every rubric and OUTRANK craft
+  defaults where they conflict.
+- **The gold folder** (`gold/` in the repo, or `~/.claude/skills/fb5/gold/` when installed):
+  exemplars the gate or the user marked as the bar. In Phase 0, read any exemplar matching
+  the task's domain; imitate its structure and technique, never its content — the kill test
+  applies doubly to anything near a gold example.
 
 ## The laws (compressed; full text in references/protocol.md)
 
@@ -73,14 +83,22 @@ in the report.
 | Translation, localization, multilingual content | [references/craft/translation.md](references/craft/translation.md) |
 | Events, logistics, multi-party coordination, run-of-show, itineraries | [references/craft/coordination.md](references/craft/coordination.md) |
 
-3. Write the task rubric: the relevant craft rules plus 3-8 task-specific checkable lines.
-   State it before producing.
+3. Write the task rubric: the relevant craft rules, the house overlay's rules if present,
+   plus 3-8 task-specific checkable lines. State it before producing. Then gate the rubric
+   itself: every line a number, a named pattern, or a binary condition; no two lines in
+   conflict; and at least one DISCRIMINATOR line that a competent-but-generic version of
+   this deliverable would fail. A rubric the average draft already passes is not a rubric
+   yet.
 4. If the work carries more than 5 live constraints, write the constraint ledger: every
    constraint numbered; every draft gets walked against it line by line.
 5. Build the part inventory: every element the deliverable contains (every section, screen,
    state, beat, scene, function, paragraph). This is the coverage checklist; a buried empty
    state or a footnote is as in-scope as the hero. Keep it private; it drives coverage, not
    output.
+6. In `full` mode, open the run-state file `.fb5-run.md` in the working directory (or carry
+   its sections in the report where files cannot be written): rubric, inventory, ledger,
+   pass ledger, decisions, open findings. Update it as you go; if the session degrades or is
+   cut, this file is the handoff a fresh session resumes from.
 
 ## Phase 1: Candidates (creative or novel deliverables; skip in `quick` mode)
 
@@ -88,7 +106,10 @@ For signature moments, brand directions, hero sections, names, openings, positio
 or architecture approaches: never refine draft one. Generate 3-5 INDEPENDENT candidates, each
 forced down a distinct angle (minimal vs maximal, conventional vs contrarian, risk-first vs
 user-first). With subagents, generate them in parallel fresh contexts; without, generate them
-in separate clearly-bracketed passes, deliberately breaking from the previous one. Rank the
+in separate clearly-bracketed passes, deliberately breaking from the previous one. Before
+ranking, compare skeletons (section order, structural moves, the shape of the argument): two
+candidates sharing a skeleton are one candidate wearing two coats; regenerate the duplicate
+down a genuinely different named angle. Rank the
 candidates with Judge 2 (the taste gate in candidate-ranking mode) from
 [references/judges.md](references/judges.md); fall back to the 3-lens panel only when no
 rubric line separates the finalists. Pick the winner, graft the best elements from the
@@ -102,6 +123,11 @@ the rubric lines that govern it (attention decays; bring the standard to the gen
 Cheap gates run constantly: typecheck and lint for code, the ban-list scan for text, the
 ledger walk for constraint-heavy work. Match the existing idiom when editing something that
 exists; the new work should be indistinguishable in style from the best of what surrounds it.
+
+When the draft is complete, run one REMOVAL pass before producing evidence: for every
+element (sentence, card, effect, option, section), name what breaks without it; if the
+answer is nothing, cut it. Drafts fail by addition; expect to cut 10-30%. Deletion is the
+cheapest quality gain in the whole procedure.
 
 ## Phase 3: Evidence
 
@@ -128,8 +154,11 @@ then straight to the report. In `full` mode, converge:
 
 Sweep the WHOLE deliverable, one fresh-eyes judge per rubric dimension. A dimension is a
 craft-file section or a named quality axis (layout, color semantics, typography, copy, sync,
-states); typically 3-8 judges per sweep, never one judge per rubric line. In order of
-preference: the `verifier` agent (installed at ~/.claude/agents, or shipped in the frontier
+states); typically 3-8 judges per sweep, never one judge per rubric line. The LAST lens of
+every sweep is always COHERENCE: one continuous whole-artifact read (or scroll-through)
+checking only the whole — register drift, gray-temperature mixing, argument repetition,
+pacing — because parts pass while wholes drift. In order of
+preference: the `verifier` agent (installed at ~/.claude/agents, or shipped in the fb5
 repo's agents/ folder) if available; else any general-purpose subagent given Judge 1 from
 [references/judges.md](references/judges.md) verbatim; else Judge 1 run yourself as separate
 clearly-bracketed passes.
@@ -156,10 +185,14 @@ spawn it with a model override to the strongest tier your plan offers; when none
 stronger, the fresh context and lens structure still carry the gate.
 Without agents: a fresh context given Judge 2 verbatim on your strongest model. It judges
 what rubrics cannot capture: ownability, sub-rubric craft, rubric gaming. Fix its findings,
-re-gate once. Append its DISTILL lines to your standards files (references/craft/ in a fork, or
-wherever you keep them); on surfaces that cannot write files, include them in the report
-under DISTILL. High-stakes means: the deliverable is public, expensive to redo,
-brand-defining, or the user said it must be the best possible.
+re-gate once. Write each DISTILL line to exactly one scope, the widest that is still true:
+the matching craft file (true for the whole domain), the house overlay `references/house.md`
+(true for this brand or team), or the project's CLAUDE.md (true only for this repo); on
+surfaces that cannot write files, include them in the report under DISTILL with the intended
+scope named. When the gated work passes with zero findings and the gate says it clears the
+"would you sign it" bar with distinction, offer to save it to `gold/<domain>/` with the
+3-line header from [gold/README.md](../gold/README.md). High-stakes means: the deliverable
+is public, expensive to redo, brand-defining, or the user said it must be the best possible.
 
 ## Report format
 

@@ -38,7 +38,9 @@ findings back here to fix. This prompt still runs the passes itself when you do 
 LAWS
 1. Rubric before artifact: write the rubric before generating: the attached craft file's
    rules plus 3-8 task-specific checkable lines (no craft file attached: derive 6-12 concrete
-   lines yourself, numbers and named patterns, never adjectives).
+   lines yourself, numbers and named patterns, never adjectives). Gate the rubric itself:
+   every line checkable, no two in conflict, and at least one DISCRIMINATOR line a
+   competent-but-generic version of this deliverable would fail.
 2. Draft one is never the deliverable.
 3. Fresh eyes find defects; authors defend them. Judge passes are run as a separate role
    that defends nothing.
@@ -58,12 +60,17 @@ PROCEDURE (the default; fits in one response)
 2. Candidates (only for signature moments, brand directions, hero sections, names, openings,
    positioning lines, architecture approaches): generate 3-5 independent candidates in
    separate, clearly-bracketed passes, each forced down a distinct angle (minimal vs
-   maximal, conventional vs contrarian). Rank them with the GATE below in candidate-ranking
+   maximal, conventional vs contrarian). Two candidates sharing a skeleton (same section
+   order, same structural moves) count as one; regenerate the duplicate down a different
+   angle. Rank them with the GATE below in candidate-ranking
    mode, pick the winner, graft the best elements of the losers.
-3. Produce one concern at a time against the rubric.
+3. Produce one concern at a time against the rubric. When the draft is complete, run one
+   removal pass: for each element, name what breaks without it; nothing = cut it (expect
+   10-30%).
 4. Judge: run the VERIFIER below ONCE, as a separate clearly-bracketed pass, over the whole
    rubric, against the most inspectable form of the work you can produce (the final text
-   re-read sentence by sentence, recomputed numbers, code traced).
+   re-read sentence by sentence, recomputed numbers, code traced), ending with one
+   continuous whole-artifact read for coherence (register, repetition, pacing).
 5. Fix every finding or justify each in one line; then deliver, reporting the findings you
    fixed and anything left unverified. Done is earned by the judged pass, not by finishing
    the draft.
@@ -117,13 +124,23 @@ FINDINGS:
 1. <location> | <lens> | <what is off> | <direction of the fix> | confidence: <h/m/l>
 RANKING (if candidates given): <order, one reason each, grafts per loser>
 DISTILL:
-- <each taste judgment as a reusable rule for the domain's standards>
+- <each taste judgment as a reusable rule. Each rule names its scope, exactly one, the
+  widest that is still true: craft file (whole domain), house overlay (this brand or
+  team), or project memory (this repo only)>
 When there are no findings, put the single word NONE in place of the numbered lines and
 write exactly DISTILL: none."
 
 PANEL (only for a pure preference call no rubric line decides)
 Three verifier-style judges with distinct lenses (first-time user, expert practitioner,
 brand owner), majority vote, dissent recorded in one line.
+
+TASK TEMPLATE (optional; output quality caps at brief quality. Fill what you know, delete
+the rest, or just paste your task raw)
+DELIVERABLE: <what exactly gets produced>
+AUDIENCE: <who consumes it, and in what situation>
+CONSTRAINTS: <brand tokens, word limits, tech stack, must-include facts>
+GOLD EXAMPLE: <a past piece or reference that sets the bar, if one exists>
+DONE MEANS: <the one or two outcomes that make this a success>
 
 CRAFT STANDARD (research); this is the rubric base the laws above refer to:
 

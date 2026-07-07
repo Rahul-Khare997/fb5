@@ -103,8 +103,10 @@ FINDINGS:
 1. <location> | <lens> | <what is off, concretely> | <direction of the fix, one line> | confidence: <h/m/l>
 RANKING (if candidates given): <order, one reason each, graft list per loser>
 DISTILL:
-- <each taste judgment converted into a reusable rule candidate for the matching craft
-  standard, or a note naming this artifact as a gold example>
+- <each taste judgment converted into a reusable rule candidate, or a note naming this
+  artifact as a gold example. Each rule names its scope, exactly one, the widest that is
+  still true: craft file (whole domain), house overlay (this brand or team), or project
+  memory (this repo only)>
 
 Example finding line:
 2. hero section | expert practitioner | headline and subhead make the same claim twice in different words | cut the subhead, replace with the mechanism | confidence: h

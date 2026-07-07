@@ -30,6 +30,10 @@ These rules are constraints, not a script. The path is yours. Project-specific i
    Section 5) what excellent looks like in checkable, concrete terms. "Premium" is not a standard;
    "one accent color with a locked meaning, spacing on an 8px grid, body text 65-75ch" is. If no
    rubric exists for the task, write one first (5-10 checkable lines), then build against it.
+   Then gate the rubric itself before any artifact: every line is a number, a named pattern, or a
+   binary condition; no two lines conflict; and at least one line is a discriminator that a
+   competent-but-generic version of this deliverable would FAIL. A rubric the average draft
+   already passes is not a rubric yet; sharpen the discriminator until it bites.
 
 2. **Draft one is never the deliverable.** First-pass output from any model regresses toward the
    generic. Quality is produced by the loop in Section 2, not by the first generation. Budget for
@@ -158,8 +162,16 @@ Apply these on Opus and below; they are harmless on stronger models.
   dimensions, walked one by one with a written verdict each, works.
 - **Re-anchor before each part.** Paste or re-read the relevant rubric lines right before
   generating that part. Do not rely on instructions given 50k tokens ago.
-- **Externalize state.** Keep a running defect log and a decisions log in a file, not in memory.
-  After any long tool output, restate the current goal and the next step in one line.
+- **Externalize state.** Keep the run state in a file, not in memory: the rubric, the part
+  inventory, the constraint ledger, the pass ledger, decisions with reasons, and open findings
+  (the convention is `.fb5-run.md` in the working directory; on surfaces that cannot write
+  files, carry the same sections in the visible report). After any long tool output, restate
+  the current goal and the next step in one line.
+- **Hand off before you degrade.** Long contexts erode instruction-following; grinding a
+  degraded session wastes the loop. When quality is slipping (instructions re-asked, rubric
+  lines forgotten, findings repeating across passes), say so and stop cleanly: the run-state
+  file IS the handoff; a fresh session reads it and resumes the loop at the recorded pass
+  instead of starting over.
 - **More passes, smaller sweeps.** Where a strong model needs 2 passes, budget 3-4. Sweep scopes
   small enough that the judge can actually hold the whole scope.
 - **Vote on taste.** Single-judge taste calls are where weaker models drift; use the 3-lens panel.
@@ -178,7 +190,10 @@ remains (first-draft originality, many-constraint juggling, and taste no rubric 
   direction, a naming set, a story opening, an architecture approach, a positioning line),
   never refine draft one. Generate 3-5 INDEPENDENT candidates in fresh contexts (parallel
   subagents), each forced down a distinct angle (minimal vs maximal, risk-first vs user-first,
-  conventional vs contrarian). Panel-judge against the rubric plus the kill test, pick the
+  conventional vs contrarian). Before ranking, compare skeletons (section order, structural
+  moves, the shape of the argument): two candidates sharing a skeleton are one candidate
+  wearing two coats; regenerate the duplicate down a genuinely different named angle.
+  Panel-judge against the rubric plus the kill test, pick the
   winner, graft the best elements from the losers, THEN run the loop on the winner. The best
   of five draws sits far above the average draw; this samples the tail of the distribution,
   which is where a cheaper model's frontier-grade output lives.
@@ -196,9 +211,13 @@ remains (first-draft originality, many-constraint juggling, and taste no rubric 
   earns its keep through the fresh context, the adversarial stance, and the lens structure.
   Fix its findings, re-gate once.
 - **Taste distillation.** Every taste call the strong model or the user makes gets recorded:
-  a new rule in the matching craft file, or an exemplar saved to a gold-examples folder you keep. Each
-  distilled call closes that gap permanently; the kit converges toward frontier taste over
-  time instead of renting it forever.
+  a new rule in the matching craft file, or an exemplar saved to the gold/ folder (see its
+  README for the format). Each distilled rule names its scope and lives at exactly one, the
+  widest that is still true: the craft file (true for the whole domain), the house overlay
+  (true for this brand or team), or the project's own memory such as CLAUDE.md (true only
+  for this repo). Scoped wrong, distillation bloats the universal standards with one team's
+  taste. Each distilled call closes that gap permanently; the kit converges toward frontier
+  taste over time instead of renting it forever.
 
 ---
 

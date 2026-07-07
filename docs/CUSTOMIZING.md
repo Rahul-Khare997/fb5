@@ -1,4 +1,4 @@
-# Making frontier yours
+# Making fb5 yours
 
 The standards ship strong, but the system is designed around one loop: your taste, written
 down, compounds. This page covers the three ways to feed it and the rules that keep the
@@ -15,9 +15,13 @@ DISTILL:
   ("What if deploys were instant?") -> assert the capability instead
 ```
 
-Review them after each high-stakes run. Append the ones you agree with to the matching file
-in `fb5/references/craft/` (or your live standards folder if you keep one). Discard the
-rest; the gate proposes, you decide.
+Review them after each high-stakes run. Each rule names its scope; append the ones you
+agree with at that scope, exactly one, the widest that is still true: the matching file in
+`fb5/references/craft/` (true for the whole domain), `fb5/references/house.md` (true for
+your brand or team), or the project's CLAUDE.md (true only for that repo). Scoped wrong,
+one team's taste bloats the universal standards. Date-stamp what you append
+(`<!-- 2026-07-07, gate run on pricing page -->`) so stale taste is findable later.
+Discard the rest; the gate proposes, you decide.
 
 ## 2. Add rules from observed failures
 
@@ -36,15 +40,20 @@ bar (same for your fork as for PRs here):
 - **Style**: keep each file under ~190 lines (deletion of weak lines is always welcome),
   and match the file's voice.
 
-## 3. Swap in your brand and your gold examples
+## 3. The house overlay and the gold library
 
-- The craft files are deliberate defaults for when no brand exists. Your real tokens always
-  win: design.md's precedence section says so explicitly. Keep a project-level brand file
-  and the rubric will draw from it first.
-- Gold examples outperform rules for anchoring: when you produce something you consider
-  excellent, keep it (a `gold/` folder works), and reference it in Phase 0 ("match the
-  structure of gold/spec-example.md"). Imitation of a known-excellent skeleton is the
-  single cheapest quality lift available.
+- The craft files are deliberate defaults for when no brand exists. Your real standards
+  live in `fb5/references/house.md`: brand tokens, voice, house bans, non-negotiables.
+  Phase 0 folds it into every rubric, and it outranks craft defaults where they conflict.
+  Do not write it by hand cold: run the one-paste tailor interview in
+  [TAILOR.md](TAILOR.md), which interviews you and writes it (template:
+  `fb5/references/house-template.md`).
+- Gold examples outperform rules for anchoring taste: work the gate passed with
+  distinction, or past pieces the team holds up as the bar, live in `gold/<domain>/` with
+  the 3-line IMITATE / IGNORE / ADDED header ([gold/README.md](../gold/README.md) has the
+  format and the garden rules). Phase 0 reads the matching exemplar and imitates its
+  structure, never its content. Imitation of a known-excellent skeleton is the single
+  cheapest quality lift available.
 
 ## Editing the judges
 

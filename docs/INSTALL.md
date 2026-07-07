@@ -30,6 +30,11 @@ If you prefer not to use plugins:
    general-purpose subagents instead.
 4. Start a new session (skills load at session start).
 
+Merge, never overwrite: if `~/.claude/skills/fb5/` already exists, your edited
+`references/house.md` and any DISTILL lines you appended to craft files are your taste,
+written down. Copy the new version OVER the old only after carrying those files across
+(house.md, gold/, and any craft edits), or diff first.
+
 Windows note: `~` is `C:\Users\<you>`. Create the folders if they do not exist.
 
 ## 3. claude.ai and Cowork

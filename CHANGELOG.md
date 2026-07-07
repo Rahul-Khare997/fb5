@@ -1,5 +1,41 @@
 # Changelog
 
+## 1.3.0 (2026-07-07)
+
+The taste-transfer release: personalization, exemplars, and the procedure upgrades that
+close the last visible gaps between rule-following and frontier output.
+
+- **Rubric gate** (Law 1, Phase 0, PROMPT, PROMPT-quick): the rubric itself is now gated
+  before any artifact: every line checkable, no conflicts, and at least one DISCRIMINATOR
+  line a competent-but-generic version would fail. Everything downstream verifies against
+  the rubric; this stops a weak rubric from capping the whole run.
+- **House overlay + tailor interview**: `fb5/references/house.md` (template shipped) holds
+  the user's brand tokens, voice, bans, and non-negotiables; Phase 0 folds it into every
+  rubric and it outranks craft defaults. `docs/TAILOR.md` is the one-paste interview that
+  writes it and ends by demoing the difference on a small task.
+- **Gold library** (`gold/`): exemplars with a 3-line IMITATE / IGNORE / ADDED header;
+  Phase 0 imitates structure never content; the gate nominates zero-finding
+  signing-bar work, a human admits it. Three per domain, replace the weakest past that.
+- **DISTILL scoping** (all four judge encodings + check-sync invariant): every distilled
+  rule names exactly one scope, the widest still true: craft file, house overlay, or
+  project memory. Stops project taste from bloating universal standards; additions are
+  date-stamped.
+- **Removal pass** (Phase 2, PROMPT): one explicit deletion pass on every complete draft
+  (what breaks without this element? nothing = cut; expect 10-30%).
+- **Coherence lens** (Phase 4, PROMPT): the last lens of every sweep is a continuous
+  whole-artifact read; parts pass while wholes drift.
+- **Candidate skeleton check** (Phase 1, protocol 4b, PROMPT): two candidates sharing a
+  skeleton count as one; the duplicate regenerates down a different named angle.
+- **Run-state file** (`.fb5-run.md`, Phase 0 full mode, protocol section 4): rubric,
+  inventory, ledgers, decisions, open findings externalized; doubles as the handoff a
+  fresh session resumes from when a long context degrades (hand-off-before-you-degrade is
+  now a standing compensation).
+- **Task intake template** (PROMPT, dist bundles, team guide): optional 5-line brief
+  scaffold (deliverable, audience, constraints, gold example, done-means); output quality
+  caps at brief quality.
+- Docs: CUSTOMIZING rewritten around the three personalization layers; INSTALL gains
+  merge-never-overwrite; TEAM-GUIDE gains the brief template and the tailor section.
+
 ## 1.2.0 (2026-07-07)
 
 The cross-model release: the "works on GPT and Gemini too" claim gets its levers, its

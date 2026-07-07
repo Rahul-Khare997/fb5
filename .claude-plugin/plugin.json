@@ -1,7 +1,7 @@
 {
   "name": "fb5",
   "description": "Standards written and audited by Claude Fable 5: make Opus, Sonnet, GPT, or Gemini produce work close to its bar. 21 craft rubrics, best-of-N candidates, convergence sweeps, a taste gate with permanent distillation.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": {
     "name": "Rahul Khare"
   },

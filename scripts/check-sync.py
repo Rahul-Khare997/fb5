@@ -48,6 +48,7 @@ INVARIANTS = {
     "gate: <pass | fail>": [JUDGES, AGENT_T, PROMPT],
     "embarrass the work in front of an expert": [JUDGES, AGENT_T, PROMPT, SCRIPT],
     "distill": [JUDGES, AGENT_T, PROMPT, SCHEMAS],
+    "the widest that is still true": [JUDGES, AGENT_T, PROMPT, SCRIPT],
     "rubric gaming": [JUDGES, AGENT_T, PROMPT, SCRIPT],
     # Schema fields the script and downstream parsers rely on
     '"enum": ["pass", "fail"]': [SCHEMAS],
