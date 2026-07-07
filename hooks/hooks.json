@@ -1,0 +1,16 @@
+{
+  "description": "Mechanical ban-list gate: scans every file the model writes or edits for the universal ban categories (filler vocabulary, placeholder elisions, stock names, vanity stats, hedged claims) and feeds findings back to the model in-turn. Turns protocol Law 7 from an instruction into a gate that cannot be skipped.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/banscan.py\" --hook"
+          }
+        ]
+      }
+    ]
+  }
+}

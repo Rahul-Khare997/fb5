@@ -1,12 +1,27 @@
 {
   "name": "frontier",
   "description": "Standards written and audited by Claude Fable 5: make Opus, Sonnet, GPT, or Gemini produce work close to its bar. 21 craft rubrics, best-of-N candidates, convergence sweeps, a taste gate with permanent distillation.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "author": {
     "name": "Apoorv Jain"
   },
-  "homepage": "https://github.com/apoorvjain25/frontier",
-  "repository": "https://github.com/apoorvjain25/frontier",
+  "homepage": "https://github.com/Rahul-Khare997/frontier",
+  "repository": "https://github.com/Rahul-Khare997/frontier",
   "license": "MIT",
-  "keywords": ["quality", "craft", "verification", "convergence", "design", "writing", "code", "acceptance-loop", "anti-slop", "fable-5", "opus", "sonnet", "gpt", "gemini"]
+  "keywords": [
+    "quality",
+    "craft",
+    "verification",
+    "convergence",
+    "design",
+    "writing",
+    "code",
+    "acceptance-loop",
+    "anti-slop",
+    "fable-5",
+    "opus",
+    "sonnet",
+    "gpt",
+    "gemini"
+  ]
 }

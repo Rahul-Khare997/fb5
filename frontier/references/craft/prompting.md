@@ -77,6 +77,10 @@ features that ship.
 - Cache the stable prefix: protocol + rubric + examples first, task last; verify with
   `usage.cache_read_input_tokens` > 0; a timestamp in the system prompt silently kills caching.
 - Batch API for non-urgent bulk work (50% off).
+- Building on GPT or Gemini instead: the same principles hold (stable prefix first, task
+  last, schemas over prose formats, effort matched to the step); the per-family knobs
+  (sampling for variety, format-drift compensations, pass budgets) are in
+  `references/adapters.md`.
 
 ## 5. Ban list
 

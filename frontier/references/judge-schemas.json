@@ -1,0 +1,119 @@
+{
+  "$comment": "Structured-output schemas for the two judges in judges.md. Use these on API surfaces that support JSON-schema output (Anthropic output_config.format, OpenAI strict json_schema, Gemini responseSchema) so findings parse reliably instead of trusting the prose template. The prose templates in judges.md remain canonical for chat surfaces; a change to either format must update both (scripts/check-sync.py checks the invariant fields).",
+  "verifier": {
+    "name": "verifier_findings",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lens", "findings", "checked", "not_checkable"],
+      "properties": {
+        "lens": {
+          "type": "string",
+          "description": "The single rubric dimension this pass judged through"
+        },
+        "findings": {
+          "type": "array",
+          "description": "Every defect at any severity and confidence; empty array is the strong claim that every rubric line in this lens was actively checked and nothing surfaced",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["location", "rubric_line", "defect", "confidence"],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "file:line, frame, element, or section"
+              },
+              "rubric_line": {
+                "type": "string",
+                "description": "The rubric line violated, or 'unverified: <line>' when the evidence could not establish it"
+              },
+              "defect": {
+                "type": "string",
+                "description": "What is wrong, concretely"
+              },
+              "confidence": {
+                "type": "string",
+                "enum": ["h", "m", "l"]
+              }
+            }
+          }
+        },
+        "checked": {
+          "type": "array",
+          "description": "Rubric lines verified, each with how (file read, command run, screenshot opened)",
+          "items": { "type": "string" }
+        },
+        "not_checkable": {
+          "type": "array",
+          "description": "Rubric lines outside this lens's scope",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "taste_gate": {
+    "name": "taste_gate_verdict",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate", "findings", "ranking", "distill"],
+      "properties": {
+        "gate": {
+          "type": "string",
+          "enum": ["pass", "fail"],
+          "description": "fail if any finding would embarrass the work in front of an expert practitioner"
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["location", "lens", "defect", "fix_direction", "confidence"],
+            "properties": {
+              "location": { "type": "string" },
+              "lens": {
+                "type": "string",
+                "enum": ["first-time audience", "expert practitioner", "brand owner"]
+              },
+              "defect": {
+                "type": "string",
+                "description": "What is off, concretely"
+              },
+              "fix_direction": {
+                "type": "string",
+                "description": "Direction of the fix, one line; the gate never fixes"
+              },
+              "confidence": {
+                "type": "string",
+                "enum": ["h", "m", "l"]
+              }
+            }
+          }
+        },
+        "ranking": {
+          "type": ["array", "null"],
+          "description": "Candidate-ranking mode only; null in gate mode. Ordered best first.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["candidate", "reason", "grafts"],
+            "properties": {
+              "candidate": { "type": "string" },
+              "reason": { "type": "string" },
+              "grafts": {
+                "type": "array",
+                "description": "Elements worth carrying into the winner (empty for the winner itself)",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "distill": {
+          "type": "array",
+          "description": "Each taste judgment converted into a reusable rule candidate for the matching craft standard, or a gold-example note; empty when there are no findings and nothing deserves gold status",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

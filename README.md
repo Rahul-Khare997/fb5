@@ -22,7 +22,8 @@ lift; the optional convergence loop and taste gate carry work that must be right
 
 [Why](#quality-is-a-procedure-not-a-property) · [Output](#output-is-parseable-findings-not-vibes) ·
 [One response](#it-works-in-a-single-response) · [How](#how-it-works) · [Inside](#whats-inside) ·
-[Install](#install) · [Cost](#token-cost-bounded-on-purpose) · [Compared](#how-it-compares) ·
+[Cross-model](#the-cross-model-kit-knobs-gates-and-receipts) · [Install](#install) ·
+[Cost](#token-cost-bounded-on-purpose) · [Compared](#how-it-compares) ·
 [Limits](#limitations) · [FAQ](#faq)
 
 </div>
@@ -170,6 +171,39 @@ prompt review alone returned 42 findings, all applied. The full run, with its re
 The expensive model set the bar once, in writing; clearing it no longer takes the expensive
 model.
 
+## The cross-model kit: knobs, gates, and receipts
+
+The standards are model-agnostic; the levers are not, and an instruction is only a gate
+when something enforces it. Four additions turn both problems into process:
+
+- **[Model adapters](frontier/references/adapters.md)**: per-family setup for Claude
+  (Opus/Sonnet/Haiku), GPT-5.x and o-series, and Gemini: where the protocol goes in the
+  message stack, how candidate variety is produced on families with and without sampling
+  params, each family's default failure (Claude's cream-and-serif taste, GPT's hedging,
+  Gemini's output compression and template drift) with its standing compensation, pass
+  budgets per tier, and cross-family judging to remove shared blind spots. PROMPT.md
+  carries the three per-model lines inline.
+- **Fresh eyes anywhere** ([scripts/judge.py](scripts/judge.py)): both judges as stateless
+  API calls (Anthropic, OpenAI, Gemini; stdlib only, nothing to install), so the judge
+  sees nothing of the producing conversation even outside Claude Code. Output is
+  schema-enforced ([judge-schemas.json](frontier/references/judge-schemas.json)), so
+  findings parse instead of drifting. No API key: the two-chat protocol in
+  [judges.md](frontier/references/judges.md) is the next rung down.
+- **A ban-list scan that runs itself** ([scripts/banscan.py](scripts/banscan.py)): the
+  universal ban categories as a mechanical check (files, stdin, or the bundled Claude Code
+  hook that scans every file the model writes and feeds hits back in-turn, to fix or
+  justify). Law 7 enforced, not requested.
+- **Receipts, not vibes** ([evals/](evals)): an A/B harness (bare task vs task + protocol,
+  same judge, same rubric) across providers, because "holds any model close to the bar" is
+  itself a claim under Law 3. Until a stamped results table sits in
+  [evals/README.md](evals/README.md), that claim stays labeled an estimate.
+
+For chat surfaces, [dist/](dist) holds one paste file per domain (PROMPT.md merged with
+the craft standard, task slot last; built by `scripts/build-dist.mjs`), and
+[PROMPT-quick.md](PROMPT-quick.md) is the minimum-instruction-load variant for weaker
+models and short tasks. CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) keeps
+every judge encoding, dist bundle, and the skill zip in sync.
+
 ## Install
 
 **Claude Code, as a plugin** (skills + the two judge agents):
@@ -185,8 +219,10 @@ model.
 **claude.ai and Cowork**: upload `frontier-skill.zip` as a custom skill (Settings,
 Capabilities), or paste [PROMPT.md](PROMPT.md) plus the relevant craft file into a Project.
 
-**Cursor, Windsurf, aider, raw API**: paste [PROMPT.md](PROMPT.md), attach the craft file
-matching your domain, put your task last.
+**Cursor, Windsurf, aider, raw API**: paste the matching one-file bundle from
+[dist/](dist) (PROMPT.md + craft standard pre-merged), or
+[PROMPT-quick.md](PROMPT-quick.md) for short tasks on weaker models; put your task last.
+Building on the API, read the [model adapters](frontier/references/adapters.md) first.
 
 Details and troubleshooting: [docs/INSTALL.md](docs/INSTALL.md).
 
@@ -238,8 +274,10 @@ and they share the convergence philosophy.
   a stronger model's eye; the DISTILL flywheel narrows this over time rather than erasing
   it on day one.
 - **Weaker off Claude Code.** Chat surfaces have no subagents and no screenshot or test
-  tooling; judge passes run one after another in the same context, and unverifiable claims
-  land in UNVERIFIED instead of being checked.
+  tooling; unverifiable claims land in UNVERIFIED instead of being checked. The judge
+  freshness gap now has two rungs above the same-context floor
+  ([scripts/judge.py](scripts/judge.py) and the two-chat protocol), but evidence tooling
+  still does not exist there.
 - **The standards are opinionated defaults.** They encode a specific bar (honest odd
   numbers over round vanity stats, one accent with a locked meaning, machine-cadence tells
   banned). Your brand tokens and your edits always win.
@@ -252,16 +290,27 @@ frontier/
 └── references/
     ├── protocol.md               # ten laws, compensations, ceiling raisers, frontier lessons
     ├── judges.md                 # verifier + taste gate + panel, portable and parseable
+    ├── adapters.md               # per-family knobs: Claude, GPT, Gemini, chat-only
+    ├── judge-schemas.json        # structured-output schemas for both judges
     └── craft/                    # 21 standards: numbers, ban lists, checklists
 agents/
 ├── verifier.md                   # fresh-eyes finder (never fixes)
 └── taste-judge.md                # 3-lens gate with DISTILL
+scripts/
+├── judge.py                      # both judges as stateless API calls (fresh eyes anywhere)
+├── banscan.py                    # mechanical ban-list scan (CLI + Claude Code hook mode)
+├── build-dist.mjs                # builds dist/ one-file bundles from PROMPT.md + craft
+└── check-sync.py                 # CI guard: judge encodings cannot drift silently
+hooks/hooks.json                  # plugin hook: banscan on every file the model writes
+evals/                            # A/B harness: bare vs protocol, judged, per model
+dist/                             # one paste file per domain, generated
 docs/                             # how it works, install, customizing
 examples/
 ├── the-distillation-run.md       # real: 8 auditors, ~260 change entries, the ledgers
 ├── self-run.md                   # real: this repo through its own gate
 └── sample-run.md                 # illustrative: a full run, annotated
 PROMPT.md                         # the whole method in one paste-able file
+PROMPT-quick.md                   # the compact single-response variant
 .claude-plugin/                   # plugin + marketplace manifests
 frontier-skill.zip                # ready upload for claude.ai custom skills
 ```
@@ -315,10 +364,14 @@ matching your domain.
 <details>
 <summary><b>Does it work with models other than Claude?</b></summary>
 
-The skill packaging is Claude Code native, but <a href="PROMPT.md">PROMPT.md</a> plus a
-craft file runs the same procedure in Cursor, Windsurf, aider, or a raw API call to any
-capable model. The standards are plain text and model-independent; only the packaging and
-the tuning notes are Claude-specific.
+The skill packaging is Claude Code native, but <a href="PROMPT.md">PROMPT.md</a> (or a
+pre-merged <a href="dist">dist/</a> bundle) runs the same procedure in Cursor, Windsurf,
+aider, or a raw API call to any capable model. The standards are plain text and
+model-independent; <a href="frontier/references/adapters.md">adapters.md</a> sets the
+per-family knobs (message placement, candidate variety, format-drift compensations, pass
+budgets, each family's default failure), and <a href="scripts/judge.py">judge.py</a> runs
+the judges against Anthropic, OpenAI, or Gemini, including cross-family (produce on one,
+judge on another).
 </details>
 
 <details>
