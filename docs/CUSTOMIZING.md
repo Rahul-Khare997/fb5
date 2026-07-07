@@ -16,7 +16,7 @@ DISTILL:
 ```
 
 Review them after each high-stakes run. Append the ones you agree with to the matching file
-in `frontier/references/craft/` (or your live standards folder if you keep one). Discard the
+in `fb5/references/craft/` (or your live standards folder if you keep one). Discard the
 rest; the gate proposes, you decide.
 
 ## 2. Add rules from observed failures
@@ -48,7 +48,7 @@ bar (same for your fork as for PRs here):
 
 ## Editing the judges
 
-`frontier/references/judges.md` is the canonical judge source; `agents/verifier.md`,
+`fb5/references/judges.md` is the canonical judge source; `agents/verifier.md`,
 `agents/taste-judge.md`, and the judge blocks in `PROMPT.md` are encodings of it. If you
 edit one, sync all four, and keep the output formats byte-compatible (fixed field counts,
 h/m/l confidence tokens, NONE for empty): downstream steps parse them.

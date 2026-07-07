@@ -21,13 +21,13 @@ import sys
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 
-JUDGES = "frontier/references/judges.md"
+JUDGES = "fb5/references/judges.md"
 AGENT_V = "agents/verifier.md"
 AGENT_T = "agents/taste-judge.md"
 PROMPT = "PROMPT.md"
 QUICK = "PROMPT-quick.md"
 SCRIPT = "scripts/judge.py"
-SCHEMAS = "frontier/references/judge-schemas.json"
+SCHEMAS = "fb5/references/judge-schemas.json"
 
 # phrase -> files it must appear in (case-insensitive substring)
 INVARIANTS = {

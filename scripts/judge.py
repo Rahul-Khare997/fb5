@@ -44,7 +44,7 @@ ENV_KEYS = {
     "gemini": "GEMINI_API_KEY",
 }
 
-# Inlined from frontier/references/judges.md (Judge 1). check-sync.py verifies drift.
+# Inlined from fb5/references/judges.md (Judge 1). check-sync.py verifies drift.
 VERIFIER_PROMPT = """You are a fresh-eyes verifier. You did not produce this work and you do not defend it. You
 never fix; you only find.
 
@@ -63,7 +63,7 @@ downstream. An empty findings list is a strong claim: it means you actively chec
 rubric line in your lens and found nothing. It is better to surface a finding that gets
 dismissed than to silently drop a real defect."""
 
-# Inlined from frontier/references/judges.md (Judge 2). check-sync.py verifies drift.
+# Inlined from fb5/references/judges.md (Judge 2). check-sync.py verifies drift.
 GATE_PROMPT = """You are the final quality gate. Your power comes from a fresh context, an adversarial
 stance, and the lenses below. You never fix; you judge. Two modes: in gate mode the work
 has ALREADY passed rule-based verification twice, so do not re-litigate mechanical rules
@@ -93,7 +93,7 @@ verdict: fail if ANY finding would embarrass the work in front of an expert prac
 
 def read_schemas():
     here = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(here, "..", "frontier", "references", "judge-schemas.json")
+    path = os.path.join(here, "..", "fb5", "references", "judge-schemas.json")
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 

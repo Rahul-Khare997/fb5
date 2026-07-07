@@ -67,7 +67,7 @@ ${nodes.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="5" fill="${BG}" strok
 <text x="92" y="212" font-family="${MONO}" font-size="76" letter-spacing="6" fill="${INK}">frontier</text>
 <text x="94" y="258" font-family="${MONO}" font-size="21" letter-spacing="1" fill="${MUTE}">quality is a procedure, not a property</text>
 <rect x="92" y="296" width="404" height="54" rx="10" fill="${CHIP}" stroke="${LINE}" stroke-width="1.4"/>
-<text x="116" y="330" font-family="${MONO}" font-size="22" fill="${AMBER}">/frontier &lt;deliverable&gt;</text>
+<text x="116" y="330" font-family="${MONO}" font-size="22" fill="${AMBER}">/fb5 &lt;deliverable&gt;</text>
 <text x="94" y="404" font-family="${MONO}" font-size="17" letter-spacing="0.5" fill="${MUTE2}">21 crafts &#183; best-of-N candidates &#183; 2-clean-pass convergence &#183; taste gate</text>
 </svg>`;
 

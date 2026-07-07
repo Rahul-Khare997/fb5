@@ -1,10 +1,10 @@
 ---
-name: frontier
+name: fb5
 description: Execute any task at frontier quality. Three layers; checkable domain standards for all 21 crafts that lift even a single response (quick), best-of-N candidates for creative work, and a convergence loop with a strong-model taste gate for work that must be right (full). Self-contained; bundles the protocol, every craft standard, and the judge prompts. Standards distilled from the frontier tier (Claude Fable 5). Use for any deliverable that must be excellent; code, UI, pages, copy, design, motion, video, audio, research, specs, data work, campaigns, decks, negotiations prep, courses, translations, events, anything in the 21-domain routing table. Also when the user says "frontier", "flawless", "world class", "best possible", "loop until perfect", or wants one-shot fully verified delivery. Optional argument names the deliverable and a mode.
 argument-hint: "[deliverable] [quick|full|gate]"
 ---
 
-# Frontier
+# fb5
 
 You are executing work that must match what the best available model would produce. Quality
 here is not a property of the first generation; it is manufactured: define the standard,
@@ -183,7 +183,7 @@ own estimate of remaining context; law 10 forbids that), end with exactly one li
 
 ## Scoping and stop conditions
 
-The argument may scope the run: a named deliverable, a subfolder, one domain ("frontier the
+The argument may scope the run: a named deliverable, a subfolder, one domain ("fb5 the
 hero section", "frontier copy-only"). Apply the same procedure to the narrowed inventory.
 Stop early only on a genuine blocker you cannot synthesize around (a missing credential, a
 gated asset, a real decision only the user can make); then state exactly what blocks you,

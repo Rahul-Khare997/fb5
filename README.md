@@ -2,7 +2,7 @@
 
 <img src="assets/hero.png" alt="frontier: quality is a procedure, not a property" width="100%">
 
-# frontier
+# fb5
 
 **Make Claude Opus, Sonnet, GPT, or Gemini produce work close to what Claude Fable 5 would
 ship: Fable 5 itself [wrote and audited](examples/the-distillation-run.md) these 21
@@ -11,13 +11,13 @@ lift; the optional convergence loop and taste gate carry work that must be right
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-2A3242.svg?labelColor=0B0E14)](LICENSE)
 [![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-skill%20%2B%20plugin-2A3242.svg?labelColor=0B0E14)](https://docs.claude.com/en/docs/claude-code)
-[![Craft standards](https://img.shields.io/badge/craft%20standards-21-2A3242.svg?labelColor=0B0E14)](frontier/references/craft)
-[![Judges](https://img.shields.io/badge/judges-verifier%20·%20taste%20gate%20·%20panel-2A3242.svg?labelColor=0B0E14)](frontier/references/judges.md)
+[![Craft standards](https://img.shields.io/badge/craft%20standards-21-2A3242.svg?labelColor=0B0E14)](fb5/references/craft)
+[![Judges](https://img.shields.io/badge/judges-verifier%20·%20taste%20gate%20·%20panel-2A3242.svg?labelColor=0B0E14)](fb5/references/judges.md)
 [![Works everywhere](https://img.shields.io/badge/also%20runs%20in-claude.ai%20·%20Cursor%20·%20Windsurf%20·%20aider-2A3242.svg?labelColor=0B0E14)](PROMPT.md)
 [![Target models](https://img.shields.io/badge/for-Opus%20·%20Sonnet%20·%20GPT%20·%20Gemini-2A3242.svg?labelColor=0B0E14)](#faq)
 
 ```
-/frontier <deliverable> [quick|full|gate]
+/fb5 <deliverable> [quick|full|gate]
 ```
 
 [Why](#quality-is-a-procedure-not-a-property) · [Output](#output-is-parseable-findings-not-vibes) ·
@@ -27,6 +27,9 @@ lift; the optional convergence loop and taste gate carry work that must be right
 [Limits](#limitations) · [FAQ](#faq)
 
 </div>
+
+New to this, or sharing it with a team? Start with the plain-English
+[team guide](docs/TEAM-GUIDE.md); it needs no prior context.
 
 Before release, this system was turned on itself, and it did not pass on the first try.
 [The distillation run](examples/the-distillation-run.md) is the adversarial audit of the
@@ -124,13 +127,13 @@ machine tells and a per-domain verification checklist:
 
 | | | |
 |---|---|---|
-| [design](frontier/references/craft/design.md) | [motion](frontier/references/craft/motion.md) | [writing](frontier/references/craft/writing.md) |
-| [code](frontier/references/craft/code.md) | [research](frontier/references/craft/research.md) | [prompting](frontier/references/craft/prompting.md) |
-| [product](frontier/references/craft/product.md) | [data](frontier/references/craft/data.md) | [security](frontier/references/craft/security.md) |
-| [ops](frontier/references/craft/ops.md) | [media](frontier/references/craft/media.md) | [marketing](frontier/references/craft/marketing.md) |
-| [decisions](frontier/references/craft/decisions.md) | [sales](frontier/references/craft/sales.md) | [teaching](frontier/references/craft/teaching.md) |
-| [management](frontier/references/craft/management.md) | [storytelling](frontier/references/craft/storytelling.md) | [academic](frontier/references/craft/academic.md) |
-| [career](frontier/references/craft/career.md) | [translation](frontier/references/craft/translation.md) | [coordination](frontier/references/craft/coordination.md) |
+| [design](fb5/references/craft/design.md) | [motion](fb5/references/craft/motion.md) | [writing](fb5/references/craft/writing.md) |
+| [code](fb5/references/craft/code.md) | [research](fb5/references/craft/research.md) | [prompting](fb5/references/craft/prompting.md) |
+| [product](fb5/references/craft/product.md) | [data](fb5/references/craft/data.md) | [security](fb5/references/craft/security.md) |
+| [ops](fb5/references/craft/ops.md) | [media](fb5/references/craft/media.md) | [marketing](fb5/references/craft/marketing.md) |
+| [decisions](fb5/references/craft/decisions.md) | [sales](fb5/references/craft/sales.md) | [teaching](fb5/references/craft/teaching.md) |
+| [management](fb5/references/craft/management.md) | [storytelling](fb5/references/craft/storytelling.md) | [academic](fb5/references/craft/academic.md) |
+| [career](fb5/references/craft/career.md) | [translation](fb5/references/craft/translation.md) | [coordination](fb5/references/craft/coordination.md) |
 
 A taste of the rules (each file carries 34 to 59 of these, counted after the last edit):
 
@@ -150,9 +153,9 @@ A taste of the rules (each file carries 34 to 59 of these, counted after the las
 > **code**: a test counts only if it fails when the change is reverted; a test that cannot
 > fail proves nothing
 
-Plus [the protocol](frontier/references/protocol.md) (the ten laws, weaker-model
+Plus [the protocol](fb5/references/protocol.md) (the ten laws, weaker-model
 compensations, ceiling raisers, lessons recorded from a frontier model) and
-[the judges](frontier/references/judges.md) (fresh-eyes verifier, 3-lens taste gate, panel),
+[the judges](fb5/references/judges.md) (fresh-eyes verifier, 3-lens taste gate, panel),
 portable to any surface.
 
 ## The origin: standards that carry their own audit trail
@@ -176,7 +179,7 @@ model.
 The standards are model-agnostic; the levers are not, and an instruction is only a gate
 when something enforces it. Four additions turn both problems into process:
 
-- **[Model adapters](frontier/references/adapters.md)**: per-family setup for Claude
+- **[Model adapters](fb5/references/adapters.md)**: per-family setup for Claude
   (Opus/Sonnet/Haiku), GPT-5.x and o-series, and Gemini: where the protocol goes in the
   message stack, how candidate variety is produced on families with and without sampling
   params, each family's default failure (Claude's cream-and-serif taste, GPT's hedging,
@@ -186,9 +189,9 @@ when something enforces it. Four additions turn both problems into process:
 - **Fresh eyes anywhere** ([scripts/judge.py](scripts/judge.py)): both judges as stateless
   API calls (Anthropic, OpenAI, Gemini; stdlib only, nothing to install), so the judge
   sees nothing of the producing conversation even outside Claude Code. Output is
-  schema-enforced ([judge-schemas.json](frontier/references/judge-schemas.json)), so
+  schema-enforced ([judge-schemas.json](fb5/references/judge-schemas.json)), so
   findings parse instead of drifting. No API key: the two-chat protocol in
-  [judges.md](frontier/references/judges.md) is the next rung down.
+  [judges.md](fb5/references/judges.md) is the next rung down.
 - **A ban-list scan that runs itself** ([scripts/banscan.py](scripts/banscan.py)): the
   universal ban categories as a mechanical check (files, stdin, or the bundled Claude Code
   hook that scans every file the model writes and feeds hits back in-turn, to fix or
@@ -209,20 +212,20 @@ every judge encoding, dist bundle, and the skill zip in sync.
 **Claude Code, as a plugin** (skills + the two judge agents):
 
 ```
-/plugin marketplace add apoorvjain25/frontier
-/plugin install frontier@apoorvjain25
+/plugin marketplace add Rahul-Khare997/fb5
+/plugin install fb5@Rahul-Khare997
 ```
 
-**Claude Code, as a plain skill**: copy the inner [`frontier/`](frontier) folder to
-`~/.claude/skills/frontier/`, and optionally [`agents/`](agents) to `~/.claude/agents/`.
+**Claude Code, as a plain skill**: copy the inner [`fb5/`](fb5) folder to
+`~/.claude/skills/fb5/`, and optionally [`agents/`](agents) to `~/.claude/agents/`.
 
-**claude.ai and Cowork**: upload `frontier-skill.zip` as a custom skill (Settings,
+**claude.ai and Cowork**: upload `fb5-skill.zip` as a custom skill (Settings,
 Capabilities), or paste [PROMPT.md](PROMPT.md) plus the relevant craft file into a Project.
 
 **Cursor, Windsurf, aider, raw API**: paste the matching one-file bundle from
 [dist/](dist) (PROMPT.md + craft standard pre-merged), or
 [PROMPT-quick.md](PROMPT-quick.md) for short tasks on weaker models; put your task last.
-Building on the API, read the [model adapters](frontier/references/adapters.md) first.
+Building on the API, read the [model adapters](fb5/references/adapters.md) first.
 
 Details and troubleshooting: [docs/INSTALL.md](docs/INSTALL.md).
 
@@ -230,10 +233,10 @@ Details and troubleshooting: [docs/INSTALL.md](docs/INSTALL.md).
 
 | Command | What you get |
 |---------|--------------|
-| `/frontier the pricing page` | the default is `full`: candidates, convergence loop, taste gate, report |
-| `/frontier fix the export flow quick` | rubric, produce, ONE judge pass, fixes; no loop, no gate |
-| `/frontier apps/web/hero.tsx gate` | taste-judge existing work in one pass, nothing modified |
-| `/frontier the launch email` | any of the 21 domains; routing is automatic |
+| `/fb5 the pricing page` | the default is `full`: candidates, convergence loop, taste gate, report |
+| `/fb5 fix the export flow quick` | rubric, produce, ONE judge pass, fixes; no loop, no gate |
+| `/fb5 apps/web/hero.tsx gate` | taste-judge existing work in one pass, nothing modified |
+| `/fb5 the launch email` | any of the 21 domains; routing is automatic |
 
 ## Token cost: bounded, on purpose
 
@@ -252,7 +255,7 @@ A convergence loop spends more tokens than a one-shot prompt. That is the trade:
 Rubrics, style guides, and self-critique are prior art; none of that is new here. What
 frontier adds is the combination; the table enumerates it.
 
-| | CLAUDE.md / Cursor rules | One-shot mega-prompt | [production-audit](https://github.com/apoorvjain25/production-audit) | frontier |
+| | CLAUDE.md / Cursor rules | One-shot mega-prompt | [production-audit](https://github.com/apoorvjain25/production-audit) | fb5 |
 |---|---|---|---|---|
 | Scope | project conventions | one task, one pass | finding what is wrong in existing products | building new work to a standard, any domain |
 | Standards | prose preferences | implied by adjectives | a defect-class taxonomy | 21 domains in checkable numbers + ban lists |
@@ -312,7 +315,7 @@ examples/
 PROMPT.md                         # the whole method in one paste-able file
 PROMPT-quick.md                   # the compact single-response variant
 .claude-plugin/                   # plugin + marketplace manifests
-frontier-skill.zip                # ready upload for claude.ai custom skills
+fb5-skill.zip                # ready upload for claude.ai custom skills
 ```
 
 ## Make it yours
@@ -367,7 +370,7 @@ matching your domain.
 The skill packaging is Claude Code native, but <a href="PROMPT.md">PROMPT.md</a> (or a
 pre-merged <a href="dist">dist/</a> bundle) runs the same procedure in Cursor, Windsurf,
 aider, or a raw API call to any capable model. The standards are plain text and
-model-independent; <a href="frontier/references/adapters.md">adapters.md</a> sets the
+model-independent; <a href="fb5/references/adapters.md">adapters.md</a> sets the
 per-family knobs (message placement, candidate variety, format-drift compensations, pass
 budgets, each family's default failure), and <a href="scripts/judge.py">judge.py</a> runs
 the judges against Anthropic, OpenAI, or Gemini, including cross-family (produce on one,

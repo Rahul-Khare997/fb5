@@ -1,9 +1,9 @@
-# Frontier: single-file prompt
+# fb5: single-file prompt
 
 
 Not using Claude Code? Paste everything below the line into any capable agent (claude.ai,
 Cursor, Windsurf, aider, a raw API call), attach the craft file matching your domain from
-`frontier/references/craft/` (design, motion, writing, code, research, prompting, product,
+`fb5/references/craft/` (design, motion, writing, code, research, prompting, product,
 data, security, ops, media, marketing, decisions, sales, teaching, management, storytelling,
 academic, career, translation, coordination), and paste your task and inputs LAST, below
 everything. For Claude Code, install the skill instead; see the README. These standards
