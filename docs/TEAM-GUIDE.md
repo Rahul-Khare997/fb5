@@ -78,10 +78,31 @@ That single file already contains the method plus the standards for your subject
 is nothing else to attach. For a short task on a weaker model, use `PROMPT-quick.md`
 instead; it is the lightweight version.
 
+**Give it a good brief.** The output can only be as sharp as the ask. If you have 60
+seconds, fill in this five-liner instead of a one-sentence request (it is also printed at
+the bottom of every paste file):
+
+```
+DELIVERABLE: what exactly gets produced
+AUDIENCE:    who consumes it, and in what situation
+CONSTRAINTS: brand rules, word limits, must-include facts
+GOLD EXAMPLE: a past piece that sets the bar, if one exists
+DONE MEANS:  the one or two outcomes that make this a success
+```
+
 **One trick that noticeably improves quality in a chat window:** when the work matters, open
 a *second, empty chat*, paste in the review instructions (the "VERIFIER" block from the file)
 plus the draft, and let that fresh chat critique it. Bring the critique back to the first
 chat to fix. A chat cannot review its own work honestly; a blank one can.
+
+## Make it speak your brand (once, 15 minutes)
+
+Out of the box, fb5 aims at "excellent in general". The tailor interview aims it at *your*
+excellent: run the one-paste prompt in [TAILOR.md](TAILOR.md) and the model interviews you
+(one question at a time) about your brand colors, voice, banned words, and non-negotiables,
+then writes them into a house file every future run obeys. It ends by running one small
+task that would have come out generic before, so you see the difference immediately. Do
+this once per team; the file is shared through the repo like everything else.
 
 ## What you actually get back
 

@@ -74,8 +74,10 @@ FINDINGS:
 2. ...
 RANKING (if candidates given): <order, one reason each, graft list per loser>
 DISTILL:
-- <each taste judgment above, converted into a reusable rule candidate for the matching
-  craft standard, or a note naming this artifact as a gold example>
+- <each taste judgment above, converted into a reusable rule candidate, or a note naming
+  this artifact as a gold example. Each rule names its scope, exactly one, the widest that
+  is still true: craft file (whole domain), house overlay (this brand or team), or project
+  memory (this repo only)>
 ```
 
 Example finding line:

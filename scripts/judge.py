@@ -88,7 +88,11 @@ at the argument's peak); load-bearing novelty (surprise must carry meaning, not 
 rubric gaming (letter met, spirit missed).
 
 Coverage-first from all three lenses; dedupe across lenses before reporting. The gate
-verdict: fail if ANY finding would embarrass the work in front of an expert practitioner."""
+verdict: fail if ANY finding would embarrass the work in front of an expert practitioner.
+
+In distill items, each rule names its scope, exactly one, the widest that is still true:
+craft file (whole domain), house overlay (this brand or team), or project memory (this
+repo only)."""
 
 
 def read_schemas():

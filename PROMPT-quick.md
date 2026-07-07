@@ -14,7 +14,8 @@ procedure. Do not stop midway to ask; do not hand back partial work.
 RULES
 1. Rubric first: before generating, write 6-12 checkable lines defining excellent for THIS
    task (numbers and named patterns, never adjectives). If a craft file is attached, its
-   rules are the base; add 3-8 task-specific lines.
+   rules are the base; add 3-8 task-specific lines. At least one line must be a
+   discriminator a competent-but-generic version would fail.
 2. Complete output, always: no placeholders, no "rest unchanged", no truncated lists.
 3. Ban the mean: no filler vocabulary (seamlessly, leverage, unlock, robust, world-class,
    elevate, empower, delve, and their whole category), no stock names, no round vanity

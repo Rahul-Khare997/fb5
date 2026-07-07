@@ -320,10 +320,27 @@ fb5-skill.zip                # ready upload for claude.ai custom skills
 
 ## Make it yours
 
-Every gate run emits DISTILL lines: taste calls converted into rule candidates; append the
-ones you agree with. When the model repeats a failure the files miss, that is a one-line
-ban-list entry with a replacement, and it upgrades every future run. Workflow and the rule
-bar: [docs/CUSTOMIZING.md](docs/CUSTOMIZING.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+Three layers of personalization, each written down once and obeyed by every future run:
+
+- **The house overlay** ([fb5/references/house.md](fb5/references/house-template.md)): your
+  brand tokens, voice, house bans, non-negotiables. Created by the one-paste tailor
+  interview ([docs/TAILOR.md](docs/TAILOR.md)): the model interviews you, one question at a
+  time, writes the file, and ends by running one small task that would have come out
+  generic before, so the difference is visible immediately. Outranks craft defaults where
+  they conflict.
+- **The gold library** ([gold/](gold)): work that actually cleared the bar, kept as
+  exemplars with a 3-line IMITATE / IGNORE / ADDED header. Phase 0 imitates structure,
+  never content; the gate nominates new entries, a human admits them.
+- **DISTILL harvesting**: every gate run emits taste calls converted into rule candidates,
+  each named to a scope (craft file, house overlay, or project memory — one scope, the
+  widest still true). Append the ones you agree with; when the model repeats a failure the
+  files miss, that is a one-line ban-list entry with a replacement.
+
+Workflow and the rule bar: [docs/CUSTOMIZING.md](docs/CUSTOMIZING.md) and
+[CONTRIBUTING.md](CONTRIBUTING.md). Pairs well with
+[claude-md-templates](https://github.com/Rahul-Khare997/Claude-Fb5-templates) (three-tier
+CLAUDE.md standing orders, also Fable-written): that kit sets how Claude behaves every
+session; this one sets how a deliverable gets made.
 
 ## FAQ
 
